@@ -9,7 +9,6 @@ import (
 	"compress/gzip"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"unicode/utf8"
 )
@@ -103,7 +102,6 @@ func header_compressed_nomemcopy(w io.Writer) error {
 	"compress/gzip"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -140,7 +138,6 @@ func header_compressed_memcopy(w io.Writer) error {
 	"compress/gzip"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -174,7 +171,6 @@ func bindataRead(data []byte, name string) ([]byte, error) {
 func header_uncompressed_nomemcopy(w io.Writer) error {
 	_, err := fmt.Fprintf(w, `import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -201,7 +197,6 @@ func bindataRead(data, name string) ([]byte, error) {
 func header_uncompressed_memcopy(w io.Writer) error {
 	_, err := fmt.Fprintf(w, `import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -331,7 +326,7 @@ func uncompressed_memcopy(w io.Writer, asset *Asset, r io.Reader) error {
 		return err
 	}
 
-	b, err := ioutil.ReadAll(r)
+	b, err := os.ReadAll(r)
 	if err != nil {
 		return err
 	}

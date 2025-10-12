@@ -1,3 +1,3 @@
-module github.com/asticode/go-bindata
+module github.com/firebat20/go-bindata
 
-go 1.13
+go 1.25

@@ -31,7 +31,6 @@ func writeDebug(w io.Writer, c *Config, toc []Asset) error {
 func writeDebugHeader(w io.Writer) error {
 	_, err := fmt.Fprintf(w, `import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -39,7 +38,7 @@ func writeDebugHeader(w io.Writer) error {
 
 // bindataRead reads the given file from disk. It returns an error on failure.
 func bindataRead(path, name string) ([]byte, error) {
-	buf, err := ioutil.ReadFile(path)
+	buf, err := os.ReadFile(path)
 	if err != nil {
 		err = fmt.Errorf("Error reading asset %%s at %%s: %%v", name, path, err)
 	}
